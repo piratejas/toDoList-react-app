@@ -18,35 +18,33 @@ function App() {
 
 //variable to get contents of input box 
 const [text, setText] = useState("");
-
 //array of items 
-let toDoList = [{key:1, text:"hello"}];
+let initialList= [{key:1, text:"hello"}];
+const [list, setList] = useState(initialList);
 
-function onClick(){
-  console.log("hello");
-  toDoList.push({key:(toDoList.length+1), text: text});
-  console.log(toDoList);
-  //call it here 
-  toDoList.map(function (item){
-    return <ListItem text = {item.text} key = {item.key}></ListItem>
-  })
+//adds text to list when button is pressed 
+function addToList(){
+  const newList = list.concat({key:(list.length+1), text: text});
+  setList(newList);
+  console.log(newList);
+  console.log(initialList);
 }
 
+//pulls text from input box 
 function handleChange(event){
   setText(event.target.value);
-  console.log(text);
 }
 
   return (
     <div className="App">
       <h1>My TO DO List</h1>
       <Input handleChange ={handleChange}></Input>
-      <Button onClick ={onClick}></Button>
+      <Button onClick ={addToList}></Button>
       <List>
-        {toDoList.map(function (item){
-          return <ListItem text = {item.text} key = {item.key}></ListItem>
+        {//creates a lis item for all items in the list 
+        list.map(function (item){
+        return <ListItem text = {item.text} key = {item.key}></ListItem>
         })}
-
       </List>
     </div>
   );
