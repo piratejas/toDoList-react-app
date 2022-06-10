@@ -4,6 +4,7 @@ import Button from "./Button";
 import Input from "./Input";
 import List from "./List";
 import ListItem from "./ListItem";
+import logo from "../../components/images/soc-logo.png"
 
 function App() {
 //need input 
@@ -24,10 +25,9 @@ const [list, setList] = useState(initialList);
 
 //adds text to list when button is pressed 
 function addToList(){
-  const newList = list.concat({key:(list.length+1), text: text});
+  const newList = list.concat({key_id:(list.length+1), text: text});
   setList(newList);
-  console.log(newList);
-  console.log(initialList);
+  setText("");
 }
 
 //pulls text from input box 
@@ -45,25 +45,33 @@ function deleteItem(key) {
     setList(newList)
 }
 }
-
+//props for add items button
 const addButtonProps = {
   className: "button",
   onClick: addToList,
   text: "Add To List"
 }
 
+//props for input 
+const inputProps = {
+  className: "input",
+  handleChange : handleChange,
+  value: text
+}
+
   return (
-    <div className="App">
-      <h1>My TO DO List</h1>
-      <Input handleChange ={handleChange}></Input>
-      <Button {...addButtonProps}></Button>
-      <List>
-        {//creates a lis item for all items in the list 
-        list.map(function (item){
-        return <ListItem text = {item.text} key = {item.key}><Button className= "button" onClick= {() => {deleteItem(item.key)}} text= "Delete Item"></Button></ListItem>
-        })}
-      </List>
-    </div>
+      <div className="App">
+        <img alt="School of Code" src={logo} width="100" />
+        <h1>My TO DO List</h1>
+        <Input {...inputProps}></Input>
+        <Button {...addButtonProps}></Button>
+        <List>
+          {//creates a lis item for all items in the list 
+          list.map(function (item){
+          return <ListItem className = "listItem" text = {item.text} key = {item.key_id}><Button className= "button" onClick= {() => {deleteItem(item.key_id)}} text= "Delete Item"></Button></ListItem>
+          })}
+        </List>
+      </div>
   );
 }
 

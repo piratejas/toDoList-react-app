@@ -1,6 +1,6 @@
-
+import "./ListItem.css"
 function ListItem(props){
-    return <li key = {props.key}>{props.text}{props.children}</li>;
+    return <li className={props.className} key = {props.key_id}>{props.text}{props.children}</li>;
 };
 
 export default ListItem;

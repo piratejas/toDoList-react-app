@@ -1,6 +1,6 @@
 
-function Input({handleChange}){
-    return <input type="text" onChange={handleChange}></input>;
+function Input(props){
+    return <input type="text" value= {props.value} onChange={props.handleChange} className={props.className}></input>;
 };
 
 export default Input;
