@@ -46,15 +46,21 @@ function deleteItem(key) {
 }
 }
 
+const addButtonProps = {
+  className: "button",
+  onClick: addToList,
+  text: "Add To List"
+}
+
   return (
     <div className="App">
       <h1>My TO DO List</h1>
       <Input handleChange ={handleChange}></Input>
-      <Button onClick ={addToList}></Button>
+      <Button {...addButtonProps}></Button>
       <List>
         {//creates a lis item for all items in the list 
         list.map(function (item){
-        return <ListItem text = {item.text} key = {item.key}><Button onClick={() => {deleteItem(item.key)}}>Delete me</Button></ListItem>
+        return <ListItem text = {item.text} key = {item.key}><Button className= "button" onClick= {() => {deleteItem(item.key)}} text= "Delete Item"></Button></ListItem>
         })}
       </List>
     </div>
