@@ -10,12 +10,15 @@
         -delete button 
     -button item (used for all buttons)
 
+delete item button
+    
+
 -iterations 
     -1st no styling but completed frame work 
         -start with input and button to set one item 
-    -2nd style buttons
-    -3rd style layout 
-    -4th add completed items in new list 
+    -2nd add delete item buttons
+    -3rd clear list button/cross off completed item checkbox/edit item button 
+    -4th style front-end
 
 event listener on button that then calls function to grab value of input 
 

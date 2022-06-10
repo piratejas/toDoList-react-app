@@ -19,7 +19,7 @@ function App() {
 //variable to get contents of input box 
 const [text, setText] = useState("");
 //array of items 
-let initialList= [{key:1, text:"hello"}];
+let initialList= [];
 const [list, setList] = useState(initialList);
 
 //adds text to list when button is pressed 
@@ -35,6 +35,17 @@ function handleChange(event){
   setText(event.target.value);
 }
 
+//delete item from list
+function deleteItem(key) {
+  if (list.length === 1){
+  const emptyList = [];
+  setList(emptyList);
+  } else {
+  const newList = [...list.slice(0, key-1), ...list.slice(key)];
+    setList(newList)
+}
+}
+
   return (
     <div className="App">
       <h1>My TO DO List</h1>
@@ -43,7 +54,7 @@ function handleChange(event){
       <List>
         {//creates a lis item for all items in the list 
         list.map(function (item){
-        return <ListItem text = {item.text} key = {item.key}></ListItem>
+        return <ListItem text = {item.text} key = {item.key}><Button onClick={() => {deleteItem(item.key)}}>Delete me</Button></ListItem>
         })}
       </List>
     </div>
