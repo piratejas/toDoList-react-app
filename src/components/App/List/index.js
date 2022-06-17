@@ -1,6 +1,5 @@
-
-function List(props){
-    return <ul>{props.children}</ul>;
+function List(props) {
+  return <ul>{props.children}</ul>;
 }
 
-export default List; 
+export default List;
